@@ -21,6 +21,6 @@ jobs:
           chmod 600 key.pem
 
       - name: Run Playbook
-        run: ansible-playbook -i aws-inventory.ini playbooks/1_install_apache.yml
+        run: ansible-playbook -i aws-inventory.ini playbooks/1-install_apache.yml
         env:
           ANSIBLE_HOST_KEY_CHECKING: "False"
