@@ -1,0 +1,42 @@
+###lets lern about docker command
+  #the below command will show all the docker commands
+  docker
+  docker info
+  #this is going to create your first container and downalod the images
+   98  docker container run --detach --publish=80:80 nginx
+     #docker ps is used to check your running container
+   99  docker ps
+  100  curl localhost
+     #if i create a new contianer with the same image name you will find that it will not download the image again
+  101  docker container run --detach --publish=81:80 nginx
+     #docker images will show that you have an nginx image
+  102  docker images
+     ##lets create another contianer with new image
+      105  docker container run --detach --publish=82:80 httpd
+  106  docker images
+#########how it is geeting those images
+ #--detach will make your contianer run as background process
+ 109  docker container run --publish 84:80 nginx
+  110  docker ps
+  111  docker ps -a
+###container vs process id
+#lets crete a contianer with mongodb
+  115  docker run -d --name=mongo mongo
+  116  docker ps
+#docker top mongo will show that this mongo db is running as process id 
+  117  docker top mongo
+##this will show all the process id in your linux system
+  118  ps aux
+#verify the process id from the previous command
+  119  docker top mongo
+##we will kill the mongo db process id 
+  120  kill -9 6831
+#tyhis will not show the mongodb running
+  121  docker ps
+#this will show mongo db is in exit state
+  122  docker ps -a
+#you can start or stop a container gracefully using docker stop or start command
+  123  docker start mongo
+  124  docker ps
+  125  docker stop 3c
+  126  docker ps -a
