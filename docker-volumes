@@ -1,0 +1,35 @@
+#this will show the volume you have
+149  docker volume ls
+#we will create a container with persistent volume using switch as -v
+  151  docker run -d  --name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=true -v mysql-db:/var/lib/mysql mysql:8.0
+  152  docker ps
+  153  docker volume ls
+  #this will show where is your loca storage in your hdd
+  154  docker volume inspect mysql-db
+  155  ls /var/lib/docker/volumes/mysql-db/_data
+  #lets login inside the db 
+  156  docker exec -it mysql bash
+  mysql -u root -p
+  #if it si as for password just press enter 
+  show databases;
+  create database vwg;
+  exit
+  exit
+  ##check the path where the db is create with a folder name vwg
+  157  ls /var/lib/docker/volumes/mysql-db/_data
+  #lets upgrade the db and attach the same db 
+  158  docker stop mysql
+  159  docker rm mysql
+  160  ls /var/lib/docker/volumes/mysql-db/_data
+  #we will use a new image in the container
+  161  docker run -d  --name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=true -v mysql-db:/var/lib/mysql mysql:8.0.44
+  ##lets login inside the db and check the vwg is attached or not 
+  162  docker exec -it mysql bash
+   mysql -u root -p
+  #if it si as for password just press enter 
+  show databases;
+  create database vwg;
+  exit
+  exit
+
+  
